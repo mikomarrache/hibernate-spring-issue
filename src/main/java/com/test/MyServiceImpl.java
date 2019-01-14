@@ -19,12 +19,11 @@ public class MyServiceImpl implements MyService {
 		if(a2 != null) {
 			EntityB b = a2.getB("name2");
 			b.setName("name_dummy");
+			repository.save(a2);
 		}
 		
 		Optional<EntityA> a1 = repository.findById(1L);
 		a1.get().addB(new EntityB("name2"));
-		
-		repository.save(a2);
 		repository.save(a1.get());
 	}
 }
